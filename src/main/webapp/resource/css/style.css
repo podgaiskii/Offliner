@@ -1,0 +1,194 @@
+body{
+    background-size: 100%;
+}
+.myinfo{
+    color: #242424;
+    font-size: 12pt;
+}
+.myinfo:hover{
+    color: #0b296f;
+}
+
+.carousel {
+}
+.carousel-caption{
+
+}
+.carousel-caption{
+    color: #0f0f0f;
+}
+.carousel-caption:hover{
+    color: #e56a06;
+    font-size: 25px;
+    font-family: "Arial Black";
+    text-decoration: underline;
+}
+.nav-tabs{
+    margin-bottom: 15px;
+}
+
+a.spoiler:after{
+    content: " [-]";
+}
+a.spoiler.collapsed:after{
+    content: " [+]";
+}
+
+@media screen and (max-width: 767px){
+    .masonry[data-columns]::before{
+        content: '2 .col-xs-6';
+    }
+}
+@media screen and (min-width: 768px) and (max-width: 991px){
+    .masonry[data-columns]::before{
+        content: '3 .col-xs-4';
+    }
+}
+@media screen and (min-width: 992px) and (max-width: 1199px){
+    .masonry[data-columns]::before{
+        content: '4 .col-xs-3';
+    }
+}
+@media screen and (min-width: 1200px){
+    .masonry[data-columns]::before{
+        content: '4 .col-xs-3';
+    }
+}
+
+.bgImg{
+    position: fixed;
+    width: 100%;
+    margin-top: 00%;
+    height: 100%;
+}
+.info{
+    color: black;
+}
+
+/*Меню*/
+.menu{
+    margin-left: 60px;
+    cursor: pointer;
+}
+
+/*Надписи*/
+.faq_lab{
+    margin-bottom: 10px;
+}
+.repair_lab{
+    margin-bottom: 10px;
+}
+.apllable{
+    font-family: FontAwesome;
+    font-size: 50px;
+    color: #9b9b9b;
+}
+
+/*Кнопки*/
+.mybutton{
+    width: 130px;
+    height: 30px;
+    border-radius: 7px;
+    background-color: black;
+    color: white;
+}
+.avtreg_btn{
+
+    width: 150px;
+    background-color: #0f0f0f;
+    color: white;
+}
+.order_btn{
+    position: relative;
+    width: 100%;
+    height: 40px;
+    background-color: #0f0f0f;
+    color: white;
+}
+.avtreg_btn:hover {
+    color: white;
+    background-color: gray ;
+}
+.send_btn{
+    width: 200px;
+    position: relative;
+    left: 30px;
+    background-color: #0f0f0f;
+    color: white;
+}
+.repair_btn{
+    width: 200px;
+    position: relative;
+    left: 200px;
+    background-color: #0f0f0f;
+    color: white;
+}
+.corz_btn{
+    width: 148px;
+    background-color: #0f0f0f;
+    color: white;
+    margin-bottom: 10px;
+}
+
+
+
+/*Таблица(корзина)*/
+.corz_caption {
+    padding-top: 0px;
+    padding-bottom: 10px;
+    color: #0f0f0f;
+    font-size:40px;
+    text-align: center;
+}
+.td_corz{
+    padding: 20px;
+    width: 33%;
+    text-align: center;
+    border-bottom: solid #0f0f0f 2px;
+    vertical-align: inherit;
+}
+.tr_corz{
+    margin-bottom: 20px;
+}
+.tr_corz:hover{
+    background-color: #d8dcd8;
+}
+.table_btn{
+    color: white;
+    background-color: #d51611;
+}
+.table_cap{
+    font-family: "Arial Black";
+
+}
+
+/*--Цвета--*/
+.cir1{
+    position:absolute;
+    bottom: 0px;
+    margin-left:27%;
+}
+.cir2{
+    position:absolute;
+    bottom:0px;
+    margin-left:35%;
+}
+.cir3{
+    position: absolute;
+    bottom: 0px;
+    margin-left:43%;
+
+}
+
+/*--Подвал--*/
+footer{
+    background: #171615; /* Цвет фона */
+}
+.soc{
+    width: 45px;
+    height: 45px;
+}
+.tell{
+    width: 20px;
+    height: 20px;
+}
