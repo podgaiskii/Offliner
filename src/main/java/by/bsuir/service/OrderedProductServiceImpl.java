@@ -5,6 +5,7 @@ import by.bsuir.dao.ProductDao;
 import by.bsuir.model.OrderedProduct;
 import by.bsuir.model.Product;
 import by.bsuir.service.interfaces.OrderedProductService;
+import by.bsuir.service.interfaces.ProductService;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -15,6 +16,11 @@ public class OrderedProductServiceImpl implements OrderedProductService {
 
     private OrderedProductDao orderedProductDao;
     private ProductDao productDao;
+    private ProductService productService;
+
+    public void setProductService(ProductService productService) {
+        this.productService = productService;
+    }
 
     public void setOrderedProductDao(OrderedProductDao orderedProductDao) {
         this.orderedProductDao = orderedProductDao;
@@ -54,7 +60,8 @@ public class OrderedProductServiceImpl implements OrderedProductService {
     @Transactional
     public double getTotalBasketPrice(int userID) {
         double totalPrice = 0;
-        for (Product p : productDao.getAllProductsOfUser(userID)) {
+        List<Product> productList = productService.getAllProductsOfUser(userID);
+        for (Product p : productList) {
             totalPrice += p.getPrice();
         }
         return totalPrice;

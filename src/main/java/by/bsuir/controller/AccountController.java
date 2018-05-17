@@ -26,10 +26,10 @@ public class AccountController {
     public String getAllAccounts(Model model) {
         model.addAttribute("account", new Account());
         model.addAttribute("accounts", accountService.getAllAccounts());
-        return "redirect:/account";
+        return "/accounts";
     }
 
-    @RequestMapping(value = "/account", method = RequestMethod.POST)
+    @RequestMapping(value = "/account/add", method = RequestMethod.GET)
     public String addAccount(@ModelAttribute("account") Account account) {
         if (account.getId() == 0) {
             accountService.addAccount(account);
@@ -39,7 +39,7 @@ public class AccountController {
         return "redirect:/users";
     }
 
-    @RequestMapping(value = "/account/{id}", method = RequestMethod.DELETE)
+    @RequestMapping(value = "/account/delete/{id}", method = RequestMethod.GET)
     public String deleteAccount(@PathVariable("id") int id) {
         if (id != 0) {
             accountService.deleteAccount(id);
@@ -47,14 +47,14 @@ public class AccountController {
         return "redirect:/account";
     }
 
-    @RequestMapping(value = "/account/{id}", method = RequestMethod.PUT)
+    @RequestMapping(value = "/account/edit/{id}", method = RequestMethod.GET)
     public String editAccount(@PathVariable("id") int id, Model model) {
         model.addAttribute("account", accountService.getAccountById(id));
         model.addAttribute("accounts", accountService.getAllAccounts());
         return "redirect:/account";
     }
 
-    @RequestMapping(value = "/account/{id}", method = RequestMethod.GET)
+    @RequestMapping(value = "/account/get/{id}", method = RequestMethod.GET)
     public String showAccount(@PathVariable("id") int id, Model model) {
         model.addAttribute("account", accountService.getAccountById(id));
         return "redirect:/account";

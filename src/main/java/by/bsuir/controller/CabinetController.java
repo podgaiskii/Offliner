@@ -24,14 +24,24 @@ public class CabinetController {
 
     @RequestMapping(value = "/cabinet", method = RequestMethod.GET)
     public String openCabinet(Model model) {
-        model.addAttribute("account", accountService.getAccountById(AccountController.currentUserID));
-        model.addAttribute("products", productService.getAllProducts());
-        model.addAttribute("basket", orderedProductService.getAllOrderedProductsOfUser(AccountController.currentUserID));
-        model.addAttribute("totalCost", orderedProductService.getTotalBasketPrice(AccountController.currentUserID));
-        return "/cabinet";
+        String role = accountService.getAccountById(AccountController.currentUserID).getRole();
+        switch (role) {
+            case "moder":
+                return "redirect:/moder";
+            case "admin":
+                return "redirect:/account/all";
+            case "user":
+                model.addAttribute("account", accountService.getAccountById(AccountController.currentUserID));
+                model.addAttribute("products", productService.getAllProducts());
+                model.addAttribute("basket", orderedProductService.getAllOrderedProductsOfUser(AccountController.currentUserID));
+                return "/cabinet";
+            default:
+                return "redirect:/auth";
+        }
+
     }
 
-    @RequestMapping(value = "/cabinet/{id}", method = RequestMethod.DELETE)
+    @RequestMapping(value = "/cabinet/delete/{id}", method = RequestMethod.GET)
     public String deleteProductFromBasket(@PathVariable("id") int id) {
         orderedProductService.deleteProductFromBasket(id);
         return "redirect:/cabinet";

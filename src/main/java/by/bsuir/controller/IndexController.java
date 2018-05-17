@@ -20,10 +20,4 @@ public class IndexController {
         return "/about";
     }
 
-    @RequestMapping(value = "/vacancies", method = RequestMethod.GET)
-    public String openVacancies(Model model) {
-        model.addAttribute("accountID", AccountController.currentUserID);
-        return "/vacancies";
-    }
-
 }

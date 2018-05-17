@@ -8,7 +8,7 @@
 <head>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Планшеты</title>
+    <title>Отзывы</title>
     <link rel="shortcut icon" href="${pageContext.request.contextPath}/resource/images/icon.ico" type="image/x-icon">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resource/css/bootstrap.min.css" >
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resource/css/style.css" >
@@ -41,7 +41,9 @@
             color: #333;
             background-color: #f0f0f0;
         }
-
+        .tg .tg-4eph {
+            background-color: #f9f9f9;
+        }
         /*--footer--*/
         footer {
             background: #171615;
@@ -70,116 +72,104 @@
         </div>
     </div>
 </div>
-
 <br>
 <br>
 <br>
 <br>
 <%--content--%>
-<div class="container" style="position: relative; left: 25px">
-    <div class="row">
-        <form role="form">
-            <fieldset>
+<div class="container" >
+
+    <c:if test="${!empty reviews}">
+        <c:forEach items="${reviews}" var="review">
+            <div class="review_block">
                 <div class="row">
-                    <div class="col-md-2">
-                        <label>Сначала:</label>
-                        <select name="" class="form-control">
-                            <option value="157">Новые</option>
-                            <option value="157">Дорогие</option>
-                            <option value="133">Дешевые</option>
-                        </select>
+                    <div class="col-md-11" >
+                        <label style="font-size: 11px">
+                            <c:forEach items="${accounts}" var="account">
+                                <c:if test="${review.userID==account.id}">
+                                    <td>${account.login}</td>
+                                </c:if>
+                            </c:forEach>
+                        </label>
+                        <br>
+                        <label style="font-size: 20px;">${review.title}</label>
+                        <br>
+                        <c:if test="${review.mark==1}">
+                            <img src="${pageContext.request.contextPath}/resource/images/star.png" width="40" height="40">
+                        </c:if>
+                        <c:if test="${review.mark==2}">
+                            <img src="${pageContext.request.contextPath}/resource/images/star.png" width="40" height="40">
+                            <img src="${pageContext.request.contextPath}/resource/images/star.png" width="40" height="40">
+                        </c:if>
+                        <c:if test="${review.mark==3}">
+                            <img src="${pageContext.request.contextPath}/resource/images/star.png" width="40" height="40">
+                            <img src="${pageContext.request.contextPath}/resource/images/star.png" width="40" height="40">
+                            <img src="${pageContext.request.contextPath}/resource/images/star.png" width="40" height="40">
+                        </c:if>
+                        <c:if test="${review.mark==4}">
+                            <img src="${pageContext.request.contextPath}/resource/images/star.png" width="40" height="40">
+                            <img src="${pageContext.request.contextPath}/resource/images/star.png" width="40" height="40">
+                            <img src="${pageContext.request.contextPath}/resource/images/star.png" width="40" height="40">
+                            <img src="${pageContext.request.contextPath}/resource/images/star.png" width="40" height="40">
+                        </c:if>
+                        <c:if test="${review.mark==5}">
+                            <img src="${pageContext.request.contextPath}/resource/images/star.png" width="40" height="40">
+                            <img src="${pageContext.request.contextPath}/resource/images/star.png" width="40" height="40">
+                            <img src="${pageContext.request.contextPath}/resource/images/star.png" width="40" height="40">
+                            <img src="${pageContext.request.contextPath}/resource/images/star.png" width="40" height="40">
+                            <img src="${pageContext.request.contextPath}/resource/images/star.png" width="40" height="40">
+                        </c:if>
+
                     </div>
-                    <div class="col-md-2">
-                        <label>Количество ядер:</label>
-                        <input class="form-control" placeholder="2" name="" type="" value="">
+                    <div class="col-md-1">
                     </div>
-                    <div class="col-md-2">
-                        <label>Размер экрана:</label>
-                        <select name="" class="form-control">
-                            <option value="">Любой</option>
-                            <option value="157">3,5"</option>
-                            <option value="157">4"</option>
-                            <option value="133">4,7"</option>
-                            <option value="109">5,5"</option>
-                        </select>
-                    </div>
-                    <div class="col-md-2">
-                        <label>Флэш-память:</label>
-                        <select name="" class="form-control">
-                            <option value="157">16Gb</option>
-                            <option value="157">32Gb</option>
-                            <option value="133">64Gb</option>
-                            <option value="109">128Gb</option>
-                        </select>
-                    </div>
-                    <div class="col-md-2">
-                        <label>Кол-во точек марицы:</label>
-                        <select name="" class="form-control">
-                            <option value="157">5"</option>
-                            <option value="157">8"</option>
-                            <option value="133">12"</option>
-                        </select>
-                    </div>
-                    <div class="col-md-2">
-                        <button type="submit" class="mybutton">Найти</button>
-                        <button type="reset" class="mybutton" >Сбросить</button>
+                    <div class="col-md-4">
                     </div>
                 </div>
-            </fieldset>
-        </form>
-    </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <p>${review.contents}</p>
+                    </div>
+                </div>
+            </div>
+        </c:forEach>
+    </c:if>
+
 </div>
-<div class="container">
+
+<div class="container" >
     <hr>
+    <label style="font-size: 30px"> Добавьте свой отзыв</label>
+    <hr>
+    <c:url var="addAction" value="/reviews"/>
+    <form:form action="${addAction}" commandName="review">
+        <div class="row">
+            <div class="col-md-3">
+                <p>Придумайте заголовок:</p>
+                <form:input path="title"  class="form-control "  style="width: 285px;"/>
+            </div>
+            <div class="col-md-1"></div>
+            <div class="col-md-1">
+                <label> Оценка от 1 до 5:</label>
+            </div>
+            <form:input path="mark" class="form-control " style="width: 50px"/>
+        </div>
+        <br>
+        <div class="row">
+            <div class="col-md-6">
+                <p>Текст вашего сообщения:</p>
+                <form:textarea path="contents" class="form-control " style="width: 500px; height:200px "/>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6" align="right">
+                <input class="btn" type="submit" value="<spring:message text="Отправить"/>"/>
+            </div>
+        </div>
+
+    </form:form>
 </div>
 
-<div class="container">
-    <div class="row masonry" data-columns>
-
-        <c:if test="${!empty products}">
-            <c:forEach items="${products}" var="product">
-                <div class="item">
-                    <div class="thumbnail container">
-                            <div class="col-xs-3">
-                                <img style="margin-left: 10px"src="${product.imageUrl}" alt="" class="img-responsive" style="max-width: 300px; max-height: 300px;">
-                                <p style="margin-left: 90px; margin-top: 10px"> ${product.price} BYN</p>
-                                <a style="margin-left: 50px" type="button" href="<c:url value='/product/order/tablet/${product.id}'/>" class="btn basket_btn">Добавить в корзину </a>
-
-                            </div>
-                        <div class="col-xs-9">
-                            <h3 > ${product.manufacturer}  ${product.model}</h3>
-
-                            <div id="${product.id}">
-                                <div class="well" align="left">
-                                    <p> <b>Год выпуска:</b> ${product.year} </p>
-                                    <p> <b>Диагональ экрана:</b> ${product.diagonal}" </p>
-                                    <p> <b>Разрешение экрана:</b> ${product.resolution} </p>
-                                    <p> <b>Оперативная память:</b> ${product.ram} Гб </p>
-                                    <p> <b>Встроенная память:</b> ${product.memorySize} Гб </p>
-                                    <p> <b>Объем аккумулятора:</b> ${product.batteryCapacity} мАч </p>
-                                    <p> <b>Доступные цвета:</b> ${product.colors} </p>
-                                </div>
-                            </div>
-                        </div>
-
-                        </div>
-                    </div>
-                </div>
-            </c:forEach>
-        </c:if>
-    </div>
-</div>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
 <br>
 <br>
 <%--footer--%>

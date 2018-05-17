@@ -75,7 +75,7 @@ a.spoiler.collapsed:after{
 .faq_lab{
     margin-bottom: 10px;
 }
-.repair_lab{
+.return_lab{
     margin-bottom: 10px;
 }
 .apllable{
@@ -116,14 +116,14 @@ a.spoiler.collapsed:after{
     background-color: #0f0f0f;
     color: white;
 }
-.repair_btn{
+.return_btn{
     width: 200px;
     position: relative;
     left: 200px;
     background-color: #0f0f0f;
     color: white;
 }
-.corz_btn{
+.basket_btn{
     width: 148px;
     background-color: #0f0f0f;
     color: white;
@@ -133,24 +133,24 @@ a.spoiler.collapsed:after{
 
 
 /*Таблица(корзина)*/
-.corz_caption {
+.basket_caption {
     padding-top: 0px;
     padding-bottom: 10px;
     color: #0f0f0f;
     font-size:40px;
     text-align: center;
 }
-.td_corz{
+.td_basket{
     padding: 20px;
     width: 33%;
     text-align: center;
     border-bottom: solid #0f0f0f 2px;
     vertical-align: inherit;
 }
-.tr_corz{
+.td_basket{
     margin-bottom: 20px;
 }
-.tr_corz:hover{
+.td_basket:hover{
     background-color: #d8dcd8;
 }
 .table_btn{

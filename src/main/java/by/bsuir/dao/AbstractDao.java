@@ -2,6 +2,7 @@ package by.bsuir.dao;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.List;
 
@@ -41,7 +42,7 @@ public abstract class AbstractDao<T> {
     }
 
     private T loadEntity(int id) {
-        return (T) getCurrentSession().load(getEntityClass(), id);
+        return (T) getCurrentSession().get(getEntityClass(), id);
     }
 
     protected abstract Class getEntityClass();

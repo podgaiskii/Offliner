@@ -8,7 +8,7 @@
 <head>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Кабинет</title>
+    <title>Управление заказами</title>
     <link rel="shortcut icon" href="${pageContext.request.contextPath}/resource/images/icon.ico" type="image/x-icon">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resource/css/bootstrap.min.css" >
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resource/css/style.css" >
@@ -76,70 +76,35 @@
 <br>
 <br>
 <%--content--%>
-<div class="container">
-    <div class="row">
-        <div class="col-md-4" align="right">
-            <br>
-            <br>
-            <label> <span style="font-size: 25px; ">Здравствуйте,</span> </label>
-            <br>
-            <br>
-            <p>Имя:</p>
-            <p>Фамилия:</p>
-            <p>Отчество:</p>
-            <p>Email:</p>
-            <p>Номер телефона:</p>
-            <p>Дата рождения:</p>
-            <p>Адрес:</p>
-        </div>
-        <div class="col-md-2" align="left">
-            <br>
-            <br>
-            <label> <span style="font-size: 25px; ">${account.login}</span> </label>
-            <br>
-            <br>
-            <p>${account.name}</p>
-            <p>${account.surname}</p>
-            <p>${account.middleName}</p>
-            <p>${account.email}</p>
-            <p>${account.phone}</p>
-            <p>${account.birthDate}</p>
-            <p>${account.address}</p>
-        </div>
-        <div class="col-md-6">
-            <table width="100%">
-                <caption class="basket_caption"><img src="${pageContext.request.contextPath}/resource/images/basket.png" width="100" height="100">Корзина товаров
-                </caption>
-                <tr class="tr_basket">
-                    <td class="td_basket"><span class="table_cap">Наимeнование товара</span></td>
-                    <td class="td_basket"><span class="table_cap">Цена</span></td>
-                    <td class="td_basket"></td>
-                </tr>
-                <c:forEach items="${basket}" var="suborder">
-                    <tr class="tr_basket">
-                        <c:forEach items="${products}" var="product">
-                            <c:if test="${suborder.productID==product.id}">
-                                <td class="td_basket">${product.manufacturer} ${product.model}</td>
-                                <td class="td_basket">${product.price}</td>
-                            </c:if>
-                        </c:forEach>
-                        <td class="td_basket">
-                            <a href="<c:url value='cabinet/delete/${suborder.id}'/>" class="btn table_btn"> Удалить</a>
-                        </td>
-                    </tr>
-                </c:forEach>
+<div class="container" align="center">
+    <c:if test="${!empty orders}">
+        <table class="tg">
+            <tr>
+                <th width="40">№</th>
+                <th width="120">Логин клиента</th>
+                <th width="120">Список товаров</th>
+                <th width="120">Общая стоимость</th>
+                <th width="100">Дата</th>
+                <th width="60"></th>
+            </tr>
+            <c:forEach items="${orders}" var="order">
                 <tr>
-                    <td class="td_basket">Сумма заказа:</td>
-                    <td class="td_basket">${totalCost}</td>
+                    <td>${order.id}</td>
+                    <c:forEach items="${accounts}" var="account">
+                        <c:if test="${order.userID==account.id}">
+                            <td>${account.login}</td>
+                        </c:if>
+                    </c:forEach>
+                    <td>${order.basket}</td>
+                    <td>${order.price} BYN</td>
+                    <td>${order.date}</td>
+                    <td><a href="<c:url value='/moder/remove/${order.id}'/>">Подтвердить заказ</a></td>
                 </tr>
-            </table>
-            <c:url var="addAction" value="/cabinet/addbasket"/>
-            <form:form action="${addAction}">
-                <input class="btn order_btn" type="submit" value="<spring:message text="Оформить заказ"/>"/>
-            </form:form>
-        </div>
-    </div>
+            </c:forEach>
+        </table>
+    </c:if>
 </div>
+<br>
 <br>
 <br>
 <br>

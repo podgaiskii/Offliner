@@ -72,7 +72,6 @@
             </div>
         </div>
     </div>
-
     <br>
     <br>
 <%--content--%>
@@ -113,6 +112,9 @@
             </a>
         </div>
     </div>
+    <br>
+    <br>
+    <br>
 <%--footer--%>
     <footer>
         <div class="container">
@@ -122,8 +124,6 @@
                     <div style="alignment: center">
                     <ul class="list-unstyled list-inline pull-left" style="font-size: 12pt;">
                         <li><a href="<c:url value="/about"/>" class="myinfo" style="color: white">О нас</a></li>
-                        |
-                        <li><a href="<c:url value="/vacancies"/>" class="myinfo" style="color: white">Вакансии</a></li>
                         |
                         <li><a href="<c:url value="/reviews"/>" class="myinfo" style="color: white">Отзывы</a></li>
                     </ul>

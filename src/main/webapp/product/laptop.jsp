@@ -49,6 +49,9 @@
         .menu {
             cursor: pointer;
         }
+        .img-responsive{
+            margin: 100px 0 0 30px;
+        }
     </style>
 
 </head>
@@ -139,14 +142,18 @@
         <c:if test="${!empty products}">
             <c:forEach items="${products}" var="product">
                 <div class="item">
-                    <div class="thumbnail" align="center">
-                        <img src="${product.imageUrl}" alt="" class="img-responsive" style="max-width: 300px; max-height: 300px;">
-                        <div class="caption">
-                            <h3 > ${product.manufacturer}  ${product.model}</h3>
-                            <p> ${product.price} BYN</p>
-                            <a type="button" href="<c:url value='/product/order/laptop/${product.id}'/>" class="btn corz_btn">Добавить в корзину </a>
-                            <a href="#${product.id}" data-toggle="collapse" class="btn btn-default spoiler collapsed info">Характеристики</a>
-                            <div class="collapse" id="${product.id}">
+
+                    <div class="thumbnail container" >
+                        <div class="row">
+                            <div class="col-xs-4"><img src="${product.imageUrl}" alt="" class="img-responsive" style="max-width: 300px; max-height: 300px;">
+                                <p style="margin-left: 145px; margin-top: 10px"> ${product.price} BYN</p>
+                                <a type="button" style="margin-left: 108px" href="<c:url value='/product/order/laptop/${product.id}'/>" class="btn basket_btn">Добавить в корзину </a>
+
+                            </div>
+                            <div class="col-xs-8">
+                            <h3 style="margin-left: 20px"> ${product.manufacturer}  ${product.model}</h3>
+
+                            <div id="${product.id}">
                                 <div class="well" align="left">
                                     <p> <b>Год выпуска:</b> ${product.year} </p>
                                     <p> <b>Диагональ экрана:</b> ${product.diagonal}" </p>
@@ -157,8 +164,13 @@
                                     <p> <b>Доступные цвета:</b> ${product.colors} </p>
                                 </div>
                             </div>
+                                </div>
+                        </div>
+
                         </div>
                     </div>
+
+
                 </div>
             </c:forEach>
         </c:if>
@@ -186,8 +198,6 @@
                 <div style="alignment: center">
                     <ul class="list-unstyled list-inline pull-left" style="font-size: 12pt;">
                         <li><a href="<c:url value="/about"/>" class="myinfo" style="color: white">О нас</a></li>
-                        |
-                        <li><a href="<c:url value="/vacancies"/>" class="myinfo" style="color: white">Вакансии</a></li>
                         |
                         <li><a href="<c:url value="/reviews"/>" class="myinfo" style="color: white">Отзывы</a></li>
                     </ul>

@@ -1,5 +1,6 @@
 package by.bsuir.controller;
 
+import by.bsuir.model.Product;
 import by.bsuir.model.ReturnOrder;
 import by.bsuir.service.interfaces.AccountService;
 import by.bsuir.service.interfaces.ProductService;
@@ -24,10 +25,18 @@ public class ReturnOrderController {
     @Autowired
     private AccountService accountService;
 
-    @RequestMapping(value = "/return", method = RequestMethod.POST)
+    @RequestMapping(value = "/return", method = RequestMethod.GET)
+    public String showReturns(Model model) {
+        model.addAttribute("product", new Product());
+        model.addAttribute("return", new ReturnOrder());
+        model.addAttribute("products", productService.getAllProducts());
+        return "/return";
+    }
+
+    @RequestMapping(value = "/return/add", method = RequestMethod.POST)
     public String addReturnOrder(@ModelAttribute("return") ReturnOrder returnOrder) {
         returnOrderService.addReturnOrder(AccountController.currentUserID, returnOrder.getProductID());
-        return "return";
+        return "/return";
     }
 
     @RequestMapping(value = "/return/manage", method = RequestMethod.GET)
@@ -35,13 +44,13 @@ public class ReturnOrderController {
         model.addAttribute("products", productService.getAllProducts());
         model.addAttribute("accounts", accountService.getAllAccounts());
         model.addAttribute("returns", returnOrderService.getAllReturnOrders());
-        return "return/manage";
+        return "/return";
     }
 
-    @RequestMapping(value = "/return/{id}", method = RequestMethod.DELETE)
+    @RequestMapping(value = "/return/delete/{id}", method = RequestMethod.GET)
     public String deleteReturnOrder(@PathVariable("id") int id) {
         returnOrderService.deleteReturnOrder(id);
-        return "redirect:/return";
+        return "/return";
     }
 
 }

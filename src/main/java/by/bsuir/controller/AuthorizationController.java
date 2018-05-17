@@ -1,7 +1,6 @@
 package by.bsuir.controller;
 
 import by.bsuir.model.Account;
-import by.bsuir.service.AccountServiceImpl;
 import by.bsuir.service.interfaces.AccountService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -33,12 +32,18 @@ public class AuthorizationController {
             case "user":
                 return "redirect:/cabinet";
             case "moder":
-                return "redirect:/manager";
-            case "account":
-                return "redirect:/account";
+                return "redirect:/moder";
+            case "admin":
+                return "redirect:/account/all";
             default:
                 return "redirect:/auth";
         }
+    }
+
+    @RequestMapping(value = "/logout", method = RequestMethod.GET)
+    public String logout() {
+        AccountController.currentUserID = -1;
+        return "redirect:/index";
     }
 
 }

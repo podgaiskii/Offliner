@@ -29,17 +29,17 @@ public class OrderController {
         return "redirect:/cabinet";
     }
 
-    @RequestMapping(value = "/manager", method = RequestMethod.GET)
+    @RequestMapping(value = "/moder", method = RequestMethod.GET)
     public String getAllOrders(Model model) {
         model.addAttribute("accounts", accountService.getAllAccounts());
         model.addAttribute("orders", orderService.getAllOrders());
-        return "/manager";
+        return "/moder";
     }
 
-    @RequestMapping(value = "/manager/{id}", method = RequestMethod.DELETE)
+    @RequestMapping(value = "/moder/delete/{id}", method = RequestMethod.GET)
     public String deleteOrder(@PathVariable("id") int id) {
         orderService.deleteOrder(id);
-        return "redirect:/manager";
+        return "redirect:/moder";
     }
 
 }

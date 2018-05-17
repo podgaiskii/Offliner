@@ -8,7 +8,7 @@
 <head>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Планшеты</title>
+    <title>Offliner</title>
     <link rel="shortcut icon" href="${pageContext.request.contextPath}/resource/images/icon.ico" type="image/x-icon">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resource/css/bootstrap.min.css" >
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resource/css/style.css" >
@@ -41,7 +41,9 @@
             color: #333;
             background-color: #f0f0f0;
         }
-
+        .tg .tg-4eph {
+            background-color: #f9f9f9;
+        }
         /*--footer--*/
         footer {
             background: #171615;
@@ -70,116 +72,36 @@
         </div>
     </div>
 </div>
-
 <br>
 <br>
 <br>
 <br>
 <%--content--%>
-<div class="container" style="position: relative; left: 25px">
+<div class="container" style="">
     <div class="row">
-        <form role="form">
-            <fieldset>
-                <div class="row">
-                    <div class="col-md-2">
-                        <label>Сначала:</label>
-                        <select name="" class="form-control">
-                            <option value="157">Новые</option>
-                            <option value="157">Дорогие</option>
-                            <option value="133">Дешевые</option>
-                        </select>
-                    </div>
-                    <div class="col-md-2">
-                        <label>Количество ядер:</label>
-                        <input class="form-control" placeholder="2" name="" type="" value="">
-                    </div>
-                    <div class="col-md-2">
-                        <label>Размер экрана:</label>
-                        <select name="" class="form-control">
-                            <option value="">Любой</option>
-                            <option value="157">3,5"</option>
-                            <option value="157">4"</option>
-                            <option value="133">4,7"</option>
-                            <option value="109">5,5"</option>
-                        </select>
-                    </div>
-                    <div class="col-md-2">
-                        <label>Флэш-память:</label>
-                        <select name="" class="form-control">
-                            <option value="157">16Gb</option>
-                            <option value="157">32Gb</option>
-                            <option value="133">64Gb</option>
-                            <option value="109">128Gb</option>
-                        </select>
-                    </div>
-                    <div class="col-md-2">
-                        <label>Кол-во точек марицы:</label>
-                        <select name="" class="form-control">
-                            <option value="157">5"</option>
-                            <option value="157">8"</option>
-                            <option value="133">12"</option>
-                        </select>
-                    </div>
-                    <div class="col-md-2">
-                        <button type="submit" class="mybutton">Найти</button>
-                        <button type="reset" class="mybutton" >Сбросить</button>
-                    </div>
-                </div>
-            </fieldset>
-        </form>
+        <div class="col-md-8">
+            <div class="container">
+                <c:url var="addAction" value="/return/add"/>
+                <form:form action="${addAction}" modelAttribute="return" method="post">
+                    <label class="return_lab">Выберите модель:</label>
+                    <form:select class="form-control return_lab " path="productID">
+                        <c:forEach items="${products}" var="product">
+                            <form:option value="${product.id}">
+                                ${product.manufacturer} ${product.model}
+                            </form:option>
+                        </c:forEach>
+                    </form:select>
+                    <p>Сообщите о причине возврата: </p>
+                    <form:textarea path="reason" class="form-control " style="width: 600px; height:200px "/>
+                    <input class="btn return_btn" type="submit" value="<spring:message text="Оформить возврат"/>"/>
+                </form:form>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-2">
+
     </div>
 </div>
-<div class="container">
-    <hr>
-</div>
-
-<div class="container">
-    <div class="row masonry" data-columns>
-
-        <c:if test="${!empty products}">
-            <c:forEach items="${products}" var="product">
-                <div class="item">
-                    <div class="thumbnail container">
-                            <div class="col-xs-3">
-                                <img style="margin-left: 10px"src="${product.imageUrl}" alt="" class="img-responsive" style="max-width: 300px; max-height: 300px;">
-                                <p style="margin-left: 90px; margin-top: 10px"> ${product.price} BYN</p>
-                                <a style="margin-left: 50px" type="button" href="<c:url value='/product/order/tablet/${product.id}'/>" class="btn basket_btn">Добавить в корзину </a>
-
-                            </div>
-                        <div class="col-xs-9">
-                            <h3 > ${product.manufacturer}  ${product.model}</h3>
-
-                            <div id="${product.id}">
-                                <div class="well" align="left">
-                                    <p> <b>Год выпуска:</b> ${product.year} </p>
-                                    <p> <b>Диагональ экрана:</b> ${product.diagonal}" </p>
-                                    <p> <b>Разрешение экрана:</b> ${product.resolution} </p>
-                                    <p> <b>Оперативная память:</b> ${product.ram} Гб </p>
-                                    <p> <b>Встроенная память:</b> ${product.memorySize} Гб </p>
-                                    <p> <b>Объем аккумулятора:</b> ${product.batteryCapacity} мАч </p>
-                                    <p> <b>Доступные цвета:</b> ${product.colors} </p>
-                                </div>
-                            </div>
-                        </div>
-
-                        </div>
-                    </div>
-                </div>
-            </c:forEach>
-        </c:if>
-    </div>
-</div>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
 <br>
 <br>
 <%--footer--%>

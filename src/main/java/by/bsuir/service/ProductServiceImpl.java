@@ -5,6 +5,7 @@ import by.bsuir.compare.ProductComparatorByPriceReversed;
 import by.bsuir.compare.ProductComparatorByYear;
 import by.bsuir.dao.ProductDao;
 import by.bsuir.model.Product;
+import by.bsuir.service.interfaces.OrderedProductService;
 import by.bsuir.service.interfaces.ProductService;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -15,9 +16,14 @@ import java.util.List;
 public class ProductServiceImpl implements ProductService {
 
     private ProductDao productDao;
+    private OrderedProductService orderedProductService;
 
     public void setProductDao(ProductDao productDao) {
         this.productDao = productDao;
+    }
+
+    public void setOrderedProductService(OrderedProductService orderedProductService) {
+        this.orderedProductService = orderedProductService;
     }
 
     @Override
@@ -53,7 +59,7 @@ public class ProductServiceImpl implements ProductService {
     @Override
     @Transactional
     public List<Product> getAllProductsOfUser(int userID) {
-        return productDao.getAllProductsOfUser(userID);
+        return productDao.getProducts(orderedProductService.getAllOrderedProductsOfUser(userID));
     }
 
     @Override

@@ -1,7 +1,6 @@
 package by.bsuir.dao;
 
 import by.bsuir.model.OrderedProduct;
-import by.bsuir.model.Product;
 import org.hibernate.Criteria;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
@@ -18,7 +17,7 @@ public class OrderedProductDao extends AbstractDao<OrderedProduct> {
 
     public List<OrderedProduct> getAllOrderedProductsOfUser(int userID) {
         Criteria criteria = getCurrentSession().createCriteria(OrderedProduct.class);
-        return (List<OrderedProduct>) criteria.add(Restrictions.eq("user_id", userID)).list();
+        return (List<OrderedProduct>) criteria.add(Restrictions.eq("userID", userID)).list();
     }
 
 }

@@ -44,26 +44,29 @@
                                     <form:input class="form-control" path="login" placeholder="Логин" name="login" type="text" autofocus=""/>
                                 </div>
                                 <div class="form-group">
-                                    <form:input class="form-control" path="password" placeholder="Пароль" name="login" type="password" />
+                                    <form:input class="form-control" path="password" placeholder="Пароль" name="password" type="password" />
                                 </div>
                                 <div class="form-group">
-                                    <form:input class="form-control" path="email" placeholder="Email" name="Email" type="text" />
+                                    <form:input class="form-control" path="email" placeholder="Email" name="email" type="text" />
                                 </div>
                                 <hr>
                                 <div class="form-group">
-                                    <form:input class="form-control" path="name" placeholder="Имя" name="Name" type="text" />
+                                    <form:input class="form-control" path="name" placeholder="Имя" name="name" type="text" />
                                 </div>
                                 <div class="form-group">
-                                    <form:input class="form-control" path="surname" placeholder="Фамилия" name="Surname" type="text" />
+                                    <form:input class="form-control" path="surname" placeholder="Фамилия" name="surname" type="text" />
                                 </div>
                                 <div class="form-group">
-                                    <form:input class="form-control" path="middleName" placeholder="Отчество" name="Patronymic" type="text" />
+                                    <form:input class="form-control" path="middleName" placeholder="Отчество" name="middleName" type="text" />
                                 </div>
                                 <div class="form-group">
-                                    <form:input class="form-control" path="birthDate" placeholder="Дата рождения" name="Date" type="text" />
+                                    <form:input class="form-control" path="birthDate" placeholder="Дата рождения (гггг-мм-дд)" name="birthDate" type="text" />
                                 </div>
                                 <div class="form-group">
-                                    <form:input class="form-control" path="phone" placeholder="Номер" name="Number" type="text" value="+375 " />
+                                    <form:input class="form-control" path="phone" placeholder="Номер" name="phone" type="text" value="+375 " />
+                                </div>
+                                <div class="form-group">
+                                    <form:input class="form-control" path="address" placeholder="Адрес" name="address" type="text" />
                                 </div>
 
                                 <div class="row" style="margin-bottom: 20px">
@@ -79,7 +82,7 @@
                                 </div>
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <button type="reset" class="btn  avtreg_btn"><i class="fa fa-eraser"> Очистить </i></button>
+                                        <button type="reset" class="btn avtreg_btn"><i class="fa fa-eraser"> Очистить </i></button>
                                     </div>
                                 </div>
                                 <div class="row">

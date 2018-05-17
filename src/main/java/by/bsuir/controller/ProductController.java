@@ -63,23 +63,23 @@ public class ProductController {
         return "/product";
     }
 
-    @RequestMapping(value = "/product/{id}", method = RequestMethod.DELETE)
+    @RequestMapping(value = "/product/delete/{id}", method = RequestMethod.GET)
     public String deleteProduct(@PathVariable("id") int id) {
         productService.deleteProduct(id);
-        return "redirect:/product";
+        return "/products";
     }
 
-    @RequestMapping(value = "/product/{id}", method = RequestMethod.PUT)
+    @RequestMapping(value = "/product/edit/{id}", method = RequestMethod.GET)
     public String editProduct(@PathVariable("id") int id, Model model) {
         model.addAttribute("product", productService.getProductById(id));
         model.addAttribute("products", productService.getAllProducts());
-        return "redirect:/product";
+        return "/products";
     }
 
     @RequestMapping(value = "/product/get/{id}", method = RequestMethod.GET)
     public String getProduct(@PathVariable("id") int id, Model model) {
         model.addAttribute("product", productService.getProductById(id));
-        return "redirect:/product";
+        return "/products";
     }
 
 }

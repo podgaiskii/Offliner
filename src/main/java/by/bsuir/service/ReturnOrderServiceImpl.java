@@ -21,7 +21,7 @@ public class ReturnOrderServiceImpl implements ReturnOrderService {
     @Override
     @Transactional
     public void addReturnOrder(int userID, int productID) {
-        returnOrderDao.add(new ReturnOrder(userID, productID, Date.valueOf(new java.util.Date().toString())));
+        returnOrderDao.add(new ReturnOrder(userID, productID, new Date(new java.util.Date().getTime())));
     }
 
     @Override

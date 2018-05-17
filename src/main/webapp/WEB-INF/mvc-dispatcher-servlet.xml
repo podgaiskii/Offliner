@@ -59,6 +59,7 @@
     </bean>
     <bean id="productService" class="by.bsuir.service.ProductServiceImpl">
         <property name="productDao" ref="productDao"/>
+        <property name="orderedProductService" ref="orderedProductService"/>
     </bean>
     <bean id="accountDao" class="by.bsuir.dao.AccountDao">
         <property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory"/>
@@ -72,6 +73,7 @@
     <bean id="orderedProductService" class="by.bsuir.service.OrderedProductServiceImpl">
         <property name="orderedProductDao" ref="orderedProductDao"/>
         <property name="productDao" ref="productDao"/>
+        <property name="productService" ref="productService"/>
     </bean>
     <bean id="orderDao" class="by.bsuir.dao.OrderDao">
         <property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory"/>
@@ -79,6 +81,7 @@
     <bean id="orderService" class="by.bsuir.service.OrderServiceImpl">
         <property name="orderDao" ref="orderDao"/>
         <property name="productDao" ref="productDao"/>
+        <property name="productService" ref="productService"/>
     </bean>
     <bean id="reviewDao" class="by.bsuir.dao.ReviewDao">
         <property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory"/>

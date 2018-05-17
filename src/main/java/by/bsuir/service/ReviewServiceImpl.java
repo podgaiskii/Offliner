@@ -22,7 +22,7 @@ public class ReviewServiceImpl implements ReviewService {
     @Transactional
     public void addReview(int userID, Review review) {
         review.setUserID(userID);
-        review.setDate(Date.valueOf(new java.util.Date().toString()));
+        review.setDate(new Date(new java.util.Date().getTime()));
         reviewDao.add(review);
     }
 

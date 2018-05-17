@@ -22,6 +22,9 @@ public class ReturnOrder {
     @Column(name = "date")
     private Date date;
 
+    @Column(name = "reason")
+    private String reason;
+
     public ReturnOrder() {
         this.date = null;
     }
@@ -64,6 +67,14 @@ public class ReturnOrder {
         this.date = date;
     }
 
+    public String getReason() {
+        return reason;
+    }
+
+    public void setReason(String reason) {
+        this.reason = reason;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -72,21 +83,23 @@ public class ReturnOrder {
         return id == that.id &&
                 clientID == that.clientID &&
                 productID == that.productID &&
-                Objects.equals(date, that.date);
+                Objects.equals(date, that.date) &&
+                Objects.equals(reason, that.reason);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, clientID, productID, date);
+        return Objects.hash(id, clientID, productID, date, reason);
     }
 
     @Override
     public String toString() {
-        return "ReturnOrder {" +
+        return "ReturnOrder{" +
                 "id=" + id +
                 ", clientID=" + clientID +
                 ", productID=" + productID +
-                ", date='" + date + '\'' +
-                " }";
+                ", date=" + date +
+                ", reason='" + reason + '\'' +
+                '}';
     }
 }

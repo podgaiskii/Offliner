@@ -19,15 +19,11 @@ public class ProductDao extends AbstractDao<Product> {
 
     public List<Product> getProducts(List<OrderedProduct> orderedProductList) {
         List<Product> productList = new ArrayList<>();
-        Criteria criteria = getCurrentSession().createCriteria(Product.class);
         for (OrderedProduct op : orderedProductList) {
+            Criteria criteria = getCurrentSession().createCriteria(Product.class);
             productList.add((Product) criteria.add(Restrictions.eq("id", op.getProductID())).uniqueResult());
         }
         return productList;
-    }
-
-    public List<Product> getAllProductsOfUser(int userID) {
-        return getProducts((new OrderedProductDao()).getAllOrderedProductsOfUser(userID));
     }
 
     public List<Product> getAllProductsOfType(String type) {

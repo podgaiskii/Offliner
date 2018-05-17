@@ -27,7 +27,7 @@ public class ReviewController {
         return "/reviews";
     }
 
-    @RequestMapping(value = "/reviews", method = RequestMethod.POST)
+    @RequestMapping(value = "/reviews/add", method = RequestMethod.POST)
     public String addReview(@ModelAttribute("review") Review review) {
         reviewService.addReview(AccountController.currentUserID, review);
         return "/reviews";
