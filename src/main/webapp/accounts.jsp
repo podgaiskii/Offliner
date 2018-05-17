@@ -278,8 +278,6 @@
             <div style="padding-left: 20px; padding-right: 20px;">
                 <div style="alignment: center">
                     <ul class="list-unstyled list-inline pull-left" style="font-size: 12pt;">
-                        <li><a href="<c:url value="/about"/>" class="myinfo" style="color: white">О нас</a></li>
-                        |
                         <li><a href="<c:url value="/reviews"/>" class="myinfo" style="color: white">Отзывы</a></li>
                     </ul>
                 </div>

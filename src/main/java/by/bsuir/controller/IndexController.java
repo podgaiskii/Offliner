@@ -14,10 +14,4 @@ public class IndexController {
         return "/index";
     }
 
-    @RequestMapping(value = "/about", method = RequestMethod.GET)
-    public String openAbout(Model model) {
-        model.addAttribute("accountID", AccountController.currentUserID);
-        return "/about";
-    }
-
 }
