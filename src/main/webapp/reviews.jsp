@@ -131,6 +131,7 @@
                         <p>${review.contents}</p>
                     </div>
                 </div>
+                <hr>
             </div>
         </c:forEach>
     </c:if>

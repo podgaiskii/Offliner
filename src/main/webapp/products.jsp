@@ -138,9 +138,7 @@
 
 <div class="container" align="center">
     <div class="row">
-        <div class="col-md-2">
-        </div>
-        <div class="col-md-8" >
+        <div class="col-md-10" >
             <h3>Добавление товара</h3>
             <c:url var="addAction" value="/products/add"/>
             <form:form action="${addAction}" commandName="product">

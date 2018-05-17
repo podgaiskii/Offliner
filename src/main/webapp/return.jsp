@@ -76,6 +76,10 @@
 <br>
 <br>
 <br>
+<br>
+<br>
+<br>
+<br>
 <%--content--%>
 <div class="container" style="">
     <div class="row">
@@ -83,7 +87,7 @@
             <div class="container">
                 <c:url var="addAction" value="/return/add"/>
                 <form:form action="${addAction}" modelAttribute="return" method="post">
-                    <label class="return_lab">Выберите модель:</label>
+                    <label class="return_lab">Выберите товар:</label>
                     <form:select class="form-control return_lab " path="productID">
                         <c:forEach items="${products}" var="product">
                             <form:option value="${product.id}">
@@ -91,7 +95,7 @@
                             </form:option>
                         </c:forEach>
                     </form:select>
-                    <p>Сообщите о причине возврата: </p>
+                    <p>Причина возврата: </p>
                     <form:textarea path="reason" class="form-control " style="width: 600px; height:200px "/>
                     <input class="btn return_btn" type="submit" value="<spring:message text="Оформить возврат"/>"/>
                 </form:form>
@@ -102,6 +106,14 @@
 
     </div>
 </div>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
 <br>
 <br>
 <%--footer--%>
